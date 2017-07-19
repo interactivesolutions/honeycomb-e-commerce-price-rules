@@ -1,21 +1,40 @@
 {
-    "general":
-    {
+    "general": {
         "serviceProviderNameSpace": "HCECommercePriceRules"
     },
-    "formData":
-    [
+    "formData": {
+        "e-commerce-price-rules": "interactivesolutions\\honeycombecommercepricerules\\app\\forms\\ecommerce\\HCPriceRulesForm"
+    },
+    "adminMenu": [
+        {
+            "route": "admin.routes.e.commerce.price.rules.index",
+            "translation": "HCECommercePriceRules::e_commerce_price_rules.page_title",
+            "icon": "fa-circle-o",
+            "aclPermission": "interactivesolutions_honeycomb_e_commerce_price_rules_routes_e_commerce_price_rules_list",
+            "priority": 10
+        }
     ],
-    "adminMenu":
-    [
-    ],
-    "acl":
-    {
-        "permissions" :
-        [
+    "acl": {
+        "permissions": [
+            {
+                "name": "admin.routes.e.commerce.price.rules",
+                "controller": "interactivesolutions\\honeycombecommercepricerules\\app\\http\\controllers\\ecommerce\\HCPriceRulesController",
+                "actions": [
+                    "interactivesolutions_honeycomb_e_commerce_price_rules_routes_e_commerce_price_rules_list",
+                    "interactivesolutions_honeycomb_e_commerce_price_rules_routes_e_commerce_price_rules_create",
+                    "interactivesolutions_honeycomb_e_commerce_price_rules_routes_e_commerce_price_rules_update",
+                    "interactivesolutions_honeycomb_e_commerce_price_rules_routes_e_commerce_price_rules_delete",
+                    "interactivesolutions_honeycomb_e_commerce_price_rules_routes_e_commerce_price_rules_force_delete"
+                ]
+            }
         ],
-        "rolesActions" :
-        [
-        ]
+        "rolesActions": {
+            "project-admin": [
+                "interactivesolutions_honeycomb_e_commerce_price_rules_routes_e_commerce_price_rules_list",
+                "interactivesolutions_honeycomb_e_commerce_price_rules_routes_e_commerce_price_rules_create",
+                "interactivesolutions_honeycomb_e_commerce_price_rules_routes_e_commerce_price_rules_update",
+                "interactivesolutions_honeycomb_e_commerce_price_rules_routes_e_commerce_price_rules_delete"
+            ]
+        }
     }
 }
