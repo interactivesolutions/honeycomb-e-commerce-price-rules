@@ -1,0 +1,21 @@
+{
+    "general":
+    {
+        "serviceProviderNameSpace": "HCECommercePriceRules"
+    },
+    "formData":
+    [
+    ],
+    "adminMenu":
+    [
+    ],
+    "acl":
+    {
+        "permissions" :
+        [
+        ],
+        "rolesActions" :
+        [
+        ]
+    }
+}
