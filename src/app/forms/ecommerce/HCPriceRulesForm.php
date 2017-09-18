@@ -2,6 +2,9 @@
 
 namespace interactivesolutions\honeycombecommercepricerules\app\forms\ecommerce;
 
+use interactivesolutions\honeycombecommercegoods\app\models\ecommerce\goods\HCECTypes;
+use interactivesolutions\honeycombecommercegoods\app\models\ecommerce\HCECCategories;
+use interactivesolutions\honeycombecommercegoods\app\models\ecommerce\HCECGoods;
 use interactivesolutions\honeycombecommercepricerules\app\models\ecommerce\HCECPriceRules;
 
 class HCPriceRulesForm
@@ -71,6 +74,45 @@ class HCPriceRulesForm
                     "label"           => trans("HCECommercePriceRules::e_commerce_price_rules.amount"),
                     "required"        => 1,
                     "requiredVisible" => 1,
+                ],
+                [
+                    "type"            => "dropDownList",
+                    "fieldID"         => "categories",
+                    "label"           => trans("HCECommercePriceRules::e_commerce_price_rules.categories"),
+                    "required"        => 0,
+                    "requiredVisible" => 0,
+                    "options"         => HCECCategories::with('translations')->get(),
+                    "search"          => [
+                        "maximumSelectionLength" => 50,
+                        "minimumSelectionLength" => 0,
+                        "showNodes"              => ["translations.{lang}.label"],
+                    ],
+                ],
+                [
+                    "type"            => "dropDownList",
+                    "fieldID"         => "product_types",
+                    "label"           => trans("HCECommercePriceRules::e_commerce_price_rules.types"),
+                    "required"        => 0,
+                    "requiredVisible" => 0,
+                    "options"         => HCECTypes::with('translations')->get(),
+                    "search"          => [
+                        "maximumSelectionLength" => 50,
+                        "minimumSelectionLength" => 0,
+                        "showNodes"              => ["translations.{lang}.label"],
+                    ],
+                ],
+                [
+                    "type"            => "dropDownList",
+                    "fieldID"         => "goods",
+                    "label"           => trans("HCECommercePriceRules::e_commerce_price_rules.goods"),
+                    "required"        => 0,
+                    "requiredVisible" => 0,
+                    "options"         => HCECGoods::with('translations')->get(),
+                    "search"          => [
+                        "maximumSelectionLength" => 100,
+                        "minimumSelectionLength" => 0,
+                        "showNodes"              => ["translations.{lang}.label"],
+                    ],
                 ],
             ],
         ];

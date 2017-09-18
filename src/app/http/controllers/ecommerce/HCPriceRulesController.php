@@ -104,6 +104,7 @@ class HCPriceRulesController extends HCBaseController
         $data = $this->getInputData();
 
         $record->update(array_get($data, 'record', []));
+        $record->updateRulable(array_get($data, 'rulable'));
 
         return $this->apiShow($record->id);
     }
@@ -228,7 +229,11 @@ class HCPriceRulesController extends HCBaseController
         array_set($data, 'record.type', array_get($_data, 'type'));
         array_set($data, 'record.amount', array_get($_data, 'amount'));
 
-        return $data;
+        array_set($data, 'rulable.product_types', array_get($_data, 'product_types'));
+        array_set($data, 'rulable.goods', array_get($_data, 'goods'));
+        array_set($data, 'rulable.categories', array_get($_data, 'categories'));
+
+        return makeEmptyNullable($data);
     }
 
     /**
@@ -239,7 +244,7 @@ class HCPriceRulesController extends HCBaseController
      */
     public function apiShow(string $id)
     {
-        $with = [];
+        $with = ['categories.translations', 'goods.translations', 'product_types.translations'];
 
         $select = HCECPriceRules::getFillableFields();
 

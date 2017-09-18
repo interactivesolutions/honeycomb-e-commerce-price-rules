@@ -19,4 +19,22 @@ class HCECPriceRulesAffectedItems extends HCUuidModel
      * @var array
      */
     protected $fillable = ['id', 'rule_id', 'rulable_type', 'rulable_id'];
+
+    /**
+     * Has many affected items
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function rule()
+    {
+        return $this->belongsTo(HCECPriceRules::class, 'rule_id', 'id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     */
+    public function rulable()
+    {
+        return $this->morphTo();
+    }
 }
