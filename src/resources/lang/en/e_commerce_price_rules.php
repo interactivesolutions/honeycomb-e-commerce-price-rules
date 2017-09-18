@@ -8,5 +8,11 @@ return [
     'amount'     => 'Amount',
     'categories' => 'Categories',
     'goods'      => 'Goods',
-    'types'      => 'Good Types',
+    'goods_types'      => 'Good Types',
+
+    'types' => [
+        'percentage' => 'Percentage',
+        'fixed'      => 'Fixed price',
+        'final'      => 'Final price',
+    ],
 ];

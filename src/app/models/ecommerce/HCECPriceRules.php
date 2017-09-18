@@ -2,6 +2,7 @@
 
 namespace interactivesolutions\honeycombecommercepricerules\app\models\ecommerce;
 
+use Carbon\Carbon;
 use interactivesolutions\honeycombcore\models\HCUuidModel;
 use interactivesolutions\honeycombecommercegoods\app\models\ecommerce\goods\HCECTypes;
 use interactivesolutions\honeycombecommercegoods\app\models\ecommerce\HCECCategories;
@@ -22,6 +23,19 @@ class HCECPriceRules extends HCUuidModel
      * @var array
      */
     protected $fillable = ['id', 'name', 'from', 'to', 'type', 'amount'];
+
+    /**
+     * Is active rule
+     *
+     * @param $query
+     * @return mixed
+     */
+    public function scopeIsActiveRule($query)
+    {
+        $now = Carbon::now()->toDateTimeString();
+
+        return $query->where('from', '<=', $now)->where('to', '>', $now);
+    }
 
     /**
      * Has many affected items

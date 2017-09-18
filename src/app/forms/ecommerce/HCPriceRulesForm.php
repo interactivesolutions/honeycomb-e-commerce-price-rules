@@ -66,7 +66,7 @@ class HCPriceRulesForm
                     "label"           => trans("HCECommercePriceRules::e_commerce_price_rules.type"),
                     "required"        => 1,
                     "requiredVisible" => 1,
-                    'options'         => HCECPriceRules::getTableEnumList('type', 'label'),
+                    'options'         => HCECPriceRules::getTableEnumList('type', 'label', 'HCECommercePriceRules::e_commerce_price_rules.types.'),
                 ],
                 [
                     "type"            => "singleLine",
@@ -91,7 +91,7 @@ class HCPriceRulesForm
                 [
                     "type"            => "dropDownList",
                     "fieldID"         => "product_types",
-                    "label"           => trans("HCECommercePriceRules::e_commerce_price_rules.types"),
+                    "label"           => trans("HCECommercePriceRules::e_commerce_price_rules.goods_types"),
                     "required"        => 0,
                     "requiredVisible" => 0,
                     "options"         => HCECTypes::with('translations')->get(),
