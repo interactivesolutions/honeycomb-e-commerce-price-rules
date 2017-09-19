@@ -87,6 +87,7 @@ class HCPriceRulesController extends HCBaseController
         $data = $this->getInputData();
 
         $record = HCECPriceRules::create(array_get($data, 'record'));
+        $record->updateRulable(array_get($data, 'rulable'));
 
         return $this->apiShow($record->id);
     }
