@@ -38,6 +38,28 @@ class HCECPriceRules extends HCUuidModel
     }
 
     /**
+     * Is active rule
+     *
+     * @return mixed
+     */
+    public function isActive()
+    {
+        $now = Carbon::now()->toDateTimeString();
+
+        return $this->from <= $now && $this->to > $now;
+    }
+
+    /**
+     * Is active rule
+     *
+     * @return mixed
+     */
+    public function isNotActive()
+    {
+        return ! $this->isActive();
+    }
+
+    /**
      * Has many affected items
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
