@@ -25,6 +25,17 @@ class HCECPriceRules extends HCUuidModel
     protected $fillable = ['id', 'name', 'from', 'to', 'type', 'amount'];
 
     /**
+     * Global rules scope
+     *
+     * @param $query
+     * @return mixed
+     */
+    public function scopeGlobal($query)
+    {
+        return $query->isActiveRule()->has('affected_items', '=', 0);
+    }
+
+    /**
      * Is active rule
      *
      * @param $query
