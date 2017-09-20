@@ -47,7 +47,7 @@ class HCPriceRulesForm
                     "required"        => 1,
                     "requiredVisible" => 1,
                     "properties"      => [
-                        "format" => "YY-MM-D HH:mm:ss",
+                        "format" => "YYYY-MM-DD HH:mm:ss",
                     ],
                 ],
                 [
@@ -57,7 +57,7 @@ class HCPriceRulesForm
                     "required"        => 1,
                     "requiredVisible" => 1,
                     "properties"      => [
-                        "format" => "YY-MM-D HH:mm:ss",
+                        "format" => "YYYY-MM-DD HH:mm:ss",
                     ],
                 ],
                 [
