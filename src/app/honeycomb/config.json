@@ -3,7 +3,8 @@
         "serviceProviderNameSpace": "HCECommercePriceRules"
     },
     "formData": {
-        "e-commerce-price-rules": "interactivesolutions\\honeycombecommercepricerules\\app\\forms\\ecommerce\\HCPriceRulesForm"
+        "e-commerce-price-rules": "interactivesolutions\\honeycombecommercepricerules\\app\\forms\\ecommerce\\HCPriceRulesForm",
+        "e-commerce-price-rules-discount-codes": "interactivesolutions\\honeycombecommercepricerules\\app\\forms\\ecommerce\\pricerules\\HCECDiscountCodesForm"
     },
     "adminMenu": [
         {
@@ -12,6 +13,14 @@
             "icon": "fa-circle-o",
             "aclPermission": "interactivesolutions_honeycomb_e_commerce_price_rules_routes_e_commerce_price_rules_list",
             "priority": 10
+        },
+        {
+            "route": "admin.routes.e.commerce.price.rules.discount.codes.index",
+            "translation": "HCECommercePriceRules::e_commerce_price_rules_discount_codes.page_title",
+            "icon": "fa-truck",
+            "aclPermission": "interactivesolutions_honeycomb_e_commerce_price_rules_routes_e_commerce_price_rules_discount_codes_list",
+            "priority": 10,
+            "parent": "admin.routes.e.commerce.price.rules.index"
         }
     ],
     "acl": {
@@ -26,6 +35,17 @@
                     "interactivesolutions_honeycomb_e_commerce_price_rules_routes_e_commerce_price_rules_delete",
                     "interactivesolutions_honeycomb_e_commerce_price_rules_routes_e_commerce_price_rules_force_delete"
                 ]
+            },
+            {
+                "name": "admin.routes.e.commerce.price.rules.discount.codes",
+                "controller": "interactivesolutions\\honeycombecommercepricerules\\app\\http\\controllers\\ecommerce\\pricerules\\HCECDiscountCodesController",
+                "actions": [
+                    "interactivesolutions_honeycomb_e_commerce_price_rules_routes_e_commerce_price_rules_discount_codes_list",
+                    "interactivesolutions_honeycomb_e_commerce_price_rules_routes_e_commerce_price_rules_discount_codes_create",
+                    "interactivesolutions_honeycomb_e_commerce_price_rules_routes_e_commerce_price_rules_discount_codes_update",
+                    "interactivesolutions_honeycomb_e_commerce_price_rules_routes_e_commerce_price_rules_discount_codes_delete",
+                    "interactivesolutions_honeycomb_e_commerce_price_rules_routes_e_commerce_price_rules_discount_codes_force_delete"
+                ]
             }
         ],
         "rolesActions": {
@@ -33,7 +53,11 @@
                 "interactivesolutions_honeycomb_e_commerce_price_rules_routes_e_commerce_price_rules_list",
                 "interactivesolutions_honeycomb_e_commerce_price_rules_routes_e_commerce_price_rules_create",
                 "interactivesolutions_honeycomb_e_commerce_price_rules_routes_e_commerce_price_rules_update",
-                "interactivesolutions_honeycomb_e_commerce_price_rules_routes_e_commerce_price_rules_delete"
+                "interactivesolutions_honeycomb_e_commerce_price_rules_routes_e_commerce_price_rules_delete",
+                "interactivesolutions_honeycomb_e_commerce_price_rules_routes_e_commerce_price_rules_discount_codes_list",
+                "interactivesolutions_honeycomb_e_commerce_price_rules_routes_e_commerce_price_rules_discount_codes_create",
+                "interactivesolutions_honeycomb_e_commerce_price_rules_routes_e_commerce_price_rules_discount_codes_update",
+                "interactivesolutions_honeycomb_e_commerce_price_rules_routes_e_commerce_price_rules_discount_codes_delete"
             ]
         }
     }
