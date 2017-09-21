@@ -22,7 +22,7 @@ class HCECDiscountCodesForm
     public function createForm(bool $edit = false)
     {
         $form = [
-            'storageURL' => route('admin.api.routes.e.commerce.orders.discount.codes'),
+            'storageURL' => route('admin.api.routes.e.commerce.price.rules.discount.codes'),
             'buttons'    => [
                 [
                     "class" => "col-centered",
