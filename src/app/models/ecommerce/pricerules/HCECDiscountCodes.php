@@ -2,8 +2,10 @@
 
 namespace interactivesolutions\honeycombecommercepricerules\app\models\ecommerce\pricerules;
 
+use Carbon\Carbon;
 use interactivesolutions\honeycombacl\app\models\HCUsers;
 use interactivesolutions\honeycombcore\models\HCUuidModel;
+use interactivesolutions\honeycombecommerceorders\app\models\ecommerce\HCECCartDiscountCode;
 
 class HCECDiscountCodes extends HCUuidModel
 {
@@ -29,5 +31,43 @@ class HCECDiscountCodes extends HCUuidModel
     public function user()
     {
         return $this->belongsTo(HCUsers::class, 'user_id', 'id');
+    }
+
+    /**
+     * Is active discount
+     *
+     * @param $query
+     * @return mixed
+     */
+    public function scopeIsActive($query)
+    {
+        $now = Carbon::now()->toDateTimeString();
+
+        return $query->where(function ($query) use ($now) {
+            $query->where('valid_from', '<=', $now)->where('valid_to', '>', $now);
+        });
+    }
+
+    /**
+     * Is active discount
+     *
+     * @param $query
+     * @return mixed
+     */
+    public function scopeAvailable($query)
+    {
+        return $query->where(function ($query) {
+            $query->isActive()->where('total_available', '>', 0);
+        });
+    }
+
+    /**
+     * Discount carts
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function cart()
+    {
+        return $this->belongsToMany(HCECDiscountCodes::class, HCECCartDiscountCode::getTableName(), 'discount_code_id', 'cart_id')->withTimestamps();
     }
 }
