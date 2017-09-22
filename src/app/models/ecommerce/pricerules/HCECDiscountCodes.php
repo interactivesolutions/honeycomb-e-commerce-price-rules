@@ -51,6 +51,28 @@ class HCECDiscountCodes extends HCUuidModel
     /**
      * Is active discount
      *
+     * @return mixed
+     */
+    public function isAvailable()
+    {
+        $now = Carbon::now()->toDateTimeString();
+
+        return $this->valid_from <= $now && $this->valid_to > $now && $this->total_available;
+    }
+
+    /**
+     * Is not active discount
+     *
+     * @return mixed
+     */
+    public function isNotAvailable()
+    {
+        return ! $this->isAvailable();
+    }
+
+    /**
+     * Is active discount
+     *
      * @param $query
      * @return mixed
      */
@@ -69,5 +91,15 @@ class HCECDiscountCodes extends HCUuidModel
     public function cart()
     {
         return $this->belongsToMany(HCECDiscountCodes::class, HCECCartDiscountCode::getTableName(), 'discount_code_id', 'cart_id')->withTimestamps();
+    }
+
+    /**
+     * Relation to cart discount
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function cart_discount()
+    {
+        return $this->belongsTo(HCECCartDiscountCode::class, 'discount_code_id', 'id');
     }
 }
