@@ -21,4 +21,10 @@ return [
         'fixed'      => 'Fixed price',
         'none'       => 'No discount',
     ],
+
+    'percentage_discount_with_shipping'    => 'Discount :amount% to all cart',
+    'percentage_discount_without_shipping' => 'Discount :amount% to cart products',
+    'fixed_discount_with_shipping'         => 'Discount -:amount€ to all cart',
+    'fixed_discount_without_shipping'      => 'Discount -:amount€ to cart products',
+    'none_discount'                        => 'Free shipping',
 ];
